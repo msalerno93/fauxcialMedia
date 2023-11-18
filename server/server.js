@@ -10,7 +10,10 @@ import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoute.js"
 import userRoutes from "./routes/userRoute.js"
+import postRoutes from "./routes/postRoute.js"
+import {createPost} from "./controllers/postController.js"
 import {register} from "./controllers/authController.js"
+import { verifyToken } from "./middleware/authMiddleware.js";
 
 // CONFIGURATIONS / MIDDLEWARE //
 const __filename = fileURLToPath(import.meta.url);
@@ -39,11 +42,13 @@ const upload = multer({ storage });
 
 //ROUTES WITH FILES - AUTH //  //MIDDLEWARE //    //LOGIC TO SAVE USER/CONTROLLER //
 app.post("/auth/register", upload.single("picture"), register)
+app.post("/posts", verifyToken, upload.single("picture"), createPost)
 
 
 //ROUTES //
 app.use("/auth", authRoutes)
-app.use("/users", userRoute)
+app.use("/users", userRoutes)
+app.use("/posts", postRoutes)
 
 // MONGOOSE DB SETUP //
 
