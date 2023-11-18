@@ -39,7 +39,7 @@ export const register = async (req, res) => {
   }
 };
 
-// LOGGING IN FUNCTION //
+// LOGGING ALREADY REGISTERED IN FUNCTION //
 
 export const login = async (req, res) => {
   try {
