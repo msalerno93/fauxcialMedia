@@ -9,7 +9,7 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/authRoute.js"
-// import userRoutes from "./routes/users.js"
+import userRoutes from "./routes/userRoute.js"
 import {register} from "./controllers/authController.js"
 
 // CONFIGURATIONS / MIDDLEWARE //
@@ -43,7 +43,7 @@ app.post("/auth/register", upload.single("picture"), register)
 
 //ROUTES //
 app.use("/auth", authRoutes)
-
+app.use("/users", userRoute)
 
 // MONGOOSE DB SETUP //
 
