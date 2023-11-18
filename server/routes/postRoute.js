@@ -1,7 +1,6 @@
 import express from "express"
 import {getFeedPosts, getUserPosts, likePost} from "../controllers/postController.js"
 import { verifyToken } from "../middleware/authMiddleware.js"
-import { verify } from "jsonwebtoken"
 
 const router = express.Router()
 
